@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(66, 66, 66);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1, h2 {
+    color: azure;
+}
+
+.container {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 120px;
+    height: 120px;
+    color: azure;
+    background-color: gray;
+    border: none;
+    font-size: 80px;
+}
+
+.score {
+    font-size: 25px;
+}
