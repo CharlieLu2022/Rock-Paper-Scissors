@@ -1,9 +1,10 @@
-let result = "";
+let result;
 let playerSelection;
 let computerSelection;
 let scorePlayer = 0; //initial value required;
 let scoreComputer = 0; //initial value required;
 let topScore;
+let gameEnded = false;
 
 const playerScoreboard = document.querySelector('#playerScoreboard');
 playerScoreboard.textContent = "0";
@@ -13,31 +14,42 @@ const computerScoreboard = document.querySelector('#computerScoreboard');
 computerScoreboard.textContent = "0";
 computerScoreboard.style.color = 'azure'; 
 
+const resultBoard = document.querySelector('#resultBoard');
+
 
 // Player UI
 const rock = document.querySelector('#rock');
 rock.addEventListener('click', () => {
+    if (gameEnded = true) {
+        playerScoreboard.textContent = scorePlayer.toString();
+        computerScoreboard.textContent = scoreComputer.toString();
+    }
     playerSelection = "Rock";
     game();
 });
 
 const paper = document.querySelector('#paper');
 paper.addEventListener('click', () => {
+    if (gameEnded = true) {
+        playerScoreboard.textContent = scorePlayer.toString();
+        computerScoreboard.textContent = scoreComputer.toString();
+    }
     playerSelection = "Paper";
     game();
 });
 
 const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', () => {
+    if (gameEnded = true) {
+        playerScoreboard.textContent = scorePlayer.toString();
+        computerScoreboard.textContent = scoreComputer.toString();
+    }
     playerSelection = "Scissors";
     game();
 });
 
 function game() {
-    //click supplies playerSelection
     computerSelection = getComputerChoice();
-    console.log("Your play:" + playerSelection);
-    console.log("Computer's play:" + computerSelection);
     playRound(playerSelection, computerSelection);
 
     whoLeading ();
@@ -64,49 +76,49 @@ function playRound(playerSelection, computerSelection) {
     switch (true) {
         case (playerSelection == "Rock" && computerSelection == "Scissors"):
             result = "You win! Rock beats Scissors!";
-            console.log(result);
+            resultBoard.textContent = result;
             scorePlayer = scorePlayer + 1;
             playerScoreboard.textContent = scorePlayer.toString();
             break;
         case (playerSelection == "Rock" && computerSelection == "Rock"):
             result = "Draw!";
-            console.log(result);
+            resultBoard.textContent = result;
             break;
         case (playerSelection == "Rock" && computerSelection == "Paper"):
             result = "You lose! Paper beats Rock!";
-            console.log(result);
+            resultBoard.textContent = result;
             scoreComputer = scoreComputer + 1;
             computerScoreboard.textContent = scoreComputer.toString();
             break;
         case (playerSelection == "Paper" && computerSelection == "Rock"):
             result = "You win! Paper beats Rock!";
-            console.log(result);
+            resultBoard.textContent = result;
             scorePlayer = scorePlayer + 1;
             playerScoreboard.textContent = scorePlayer.toString();
             break;
         case (playerSelection == "Paper" && computerSelection == "Paper"):
             result = "Draw!";
-            console.log(result);
+            resultBoard.textContent = result;
             break;
         case (playerSelection == "Paper" && computerSelection == "Scissors"):
             result = "You lose! Scissors beats Paper!";
-            console.log(result);
+            resultBoard.textContent = result;
             scoreComputer = scoreComputer + 1;
             computerScoreboard.textContent = scoreComputer.toString();
             break;
         case (playerSelection == "Scissors" && computerSelection == "Paper"):
             result = "You win! Scissors beats Paper!";
-            console.log(result);
+            resultBoard.textContent = result;
             scorePlayer = scorePlayer + 1;
             playerScoreboard.textContent = scorePlayer.toString();
             break;
         case (playerSelection == "Scissors" && computerSelection == "Scissors"):
             result = "Draw!";
-            console.log(result);
+            resultBoard.textContent = result;
             break;
         case (playerSelection == "Scissors" && computerSelection == "Rock"):
             result = "You lose! Rock beats Scissors!";
-            console.log(result);
+            resultBoard.textContent = result;
             scoreComputer = scoreComputer + 1;
             computerScoreboard.textContent = scoreComputer.toString();
             break;
@@ -128,13 +140,14 @@ function whoLeading () {
 
 function announceWinner () {
     if (scorePlayer > scoreComputer) {
-        alert("You won the game! And the score is " + scorePlayer + ":" + scoreComputer + ".");
-    } else if (scorePlayer == scoreComputer) {
-        alert("Nobody has won the game! And the score is " + scorePlayer + ":" + scoreComputer + ".");
+        result = "You won the game!";
+        resultBoard.textContent = result;
     } else {
-        alert("You lost the game! And the score is " + scorePlayer + ":" + scoreComputer + ".");
+        result = "You lost the game!";
+        resultBoard.textContent = result;
     }
     scorePlayer = 0;
     scoreComputer = 0;
     topScore = 0;
+    gameEnded = true;
 }

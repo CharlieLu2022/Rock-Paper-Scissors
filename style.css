@@ -20,6 +20,15 @@ h1, h2 {
     width: 30%;
     display: flex;
     justify-content: space-between;
+    color: azure;
+}
+
+.resultBoard {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    color: azure;
+    font-size: 30px;
 }
 
 button {
