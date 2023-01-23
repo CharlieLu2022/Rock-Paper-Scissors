@@ -40,6 +40,15 @@ button {
     font-size: 80px;
 }
 
+button:hover {
+    background-color: crimson
+}
+
 .score {
     font-size: 25px;
+}
+
+.rule {
+    font-size: 18px;
+    color: azure;
 }
